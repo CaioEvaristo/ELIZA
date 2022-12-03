@@ -32,7 +32,6 @@ module.exports = async function detectIntent (languageCode, queryText, sessionId
 	};
 
 	const responses = await sessionClient.detectIntent(request);
-	// console.log(responses);
 	const result = responses[0].queryResult;
 	// console.log(result);
 

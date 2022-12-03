@@ -18,6 +18,21 @@ router.post('/dialogflow', async (req, res) => {
 	res.send(responseData.response);
 });
 
+router.get('/dialogflow', async (req, res) => {
+
+	res.send('To implement');
+});
+
+router.put('/dialogflow', async (req, res) => {
+
+	res.send('To implement');
+});
+
+router.delete('/dialogflow', async (req, res) => {
+
+	res.send('To implement');
+});
+
 router.post('/intent', async (req, res) => {
 	let displayName = req.body.displayName;
 	let messageTexts = req.body.messageTexts;
@@ -26,6 +41,21 @@ router.post('/intent', async (req, res) => {
 	let responseData = await createIntent(trainingPhrasesParts, messageTexts, displayName);
 
 	res.send(responseData.response);
+});
+
+router.get('/intent', async (req, res) => {
+
+	res.send('To implement');
+});
+
+router.put('/intent', async (req, res) => {
+
+	res.send('To implement');
+});
+
+router.delete('/intent', async (req, res) => {
+
+	res.send('To implement');
 });
 
 module.exports = router
