@@ -6,14 +6,14 @@ const PROJECID = CREDENTIALS.project_id;
 
 const CONFIGURATION = {
 	credentials: {
-			private_key: CREDENTIALS['private_key'],
-			client_email: CREDENTIALS['client_email']
+		private_key: CREDENTIALS['private_key'],
+		client_email: CREDENTIALS['client_email']
 	}
 }
 
 const intentsClient = new dialogflow.IntentsClient(CONFIGURATION);
 
-export const createIntent = async (trainingPhrasesParts, messageTexts, displayName) => {
+module.exports = createIntent = async (trainingPhrasesParts, messageTexts, displayName) => {
 	// Construct request
 
 	// The path to identify the agent that owns the created intent.

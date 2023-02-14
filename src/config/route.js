@@ -1,61 +1,33 @@
-const detectIntent = require('../controller/dialogflow');
 const createIntent = require('../controller/intent');
+const reviewBotFlow = require('../controller/bot');
 const { Router } = require('express')
 const router = Router()
 
+/*
+Nao serve pra nada não
+*/
 router.get('/', (req, res) => {
 	res.send(`Hello World.!`);
 });
 
-// Dialogflow route
-router.post('/dialogflow', async (req, res) => {
-	let languageCode = req.body.languageCode;
-	let queryText = req.body.queryText;
-	let sessionId = req.body.sessionId;
-
-	let responseData = await detectIntent(languageCode, queryText, sessionId);
-
-	res.send(responseData.response);
-});
-
-router.get('/dialogflow', async (req, res) => {
-
-	res.send('To implement');
-});
-
-router.put('/dialogflow', async (req, res) => {
-
-	res.send('To implement');
-});
-
-router.delete('/dialogflow', async (req, res) => {
-
-	res.send('To implement');
-});
-
+/* Route to create intent
+	{
+		"trainingPhrasesParts": [
+			"Example",
+			"Example phrase"
+		],
+		"botResponseMessage": ["Otimo", "Otimo exemplo", "é isso ai bem vindo"],
+		"intentDisplayName": "tempo2"
+	}
+*/
 router.post('/intent', async (req, res) => {
-	let displayName = req.body.displayName;
-	let messageTexts = req.body.messageTexts;
-	let trainingPhrasesParts = req.body.trainingPhrasesParts;
+	const displayName = req.body.displayName;
+	const botResponseMessage = req.body.botResponseMessage;
+	const trainingPhrasesParts = req.body.trainingPhrasesParts;
 
-	let responseData = await createIntent(trainingPhrasesParts, messageTexts, displayName);
+	const responseData = await createIntent(trainingPhrasesParts, botResponseMessage, displayName);
 
 	res.send(responseData.response);
-});
-
-router.get('/intent', async (req, res) => {
-
-	res.send('To implement');
-});
-
-router.put('/intent', async (req, res) => {
-
-	res.send('To implement');
-});
-
-router.delete('/intent', async (req, res) => {
-
-	res.send('To implement');
 });
 
 module.exports = router
